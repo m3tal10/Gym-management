@@ -156,7 +156,7 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 1. Log in as an admin.
 2. Create a POST request to the following link:
 - `https://gym-management-red.vercel.app/api/v1/classes`
-3. Add the following JSON in the request body:
+3. Add the following JSON in the request body (Be sure to add the start time according to your current time or else there won't be any available classes):
   ```javascript
   {
     "trainer":"6755b46a8ee85dccae284d96",
