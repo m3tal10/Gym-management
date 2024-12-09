@@ -24,7 +24,7 @@ Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
 
 # Database Schema
 ## User Model
-`{
+\\\{
     name: {
       type: String,
       required: [true, 'A user must have a name.'],
@@ -66,7 +66,7 @@ Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
     },
     passwordResetToken: String,
     passwordResetExpires: Date,
-  }`
+  }\\\
 ## Class Model
 `{
   name: {
