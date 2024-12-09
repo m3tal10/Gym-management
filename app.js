@@ -40,6 +40,15 @@ app.use(xss());
 //   console.log(req.cookies.jwt);
 //   next();
 // });
+app.use('/api/v1', (req, res, next) => {
+  res.status(200).json({
+    success: true,
+    message:
+      'Hello welcome to the gym management app created by Mashrafie Rahim Sheikh. Please refer to the documentation to get the endpoints.',
+    docLink: 'https://documenter.getpostman.com/view/36963920/2sAYBd7oEX',
+    gitLink: 'https://github.com/m3tal10/Gym-management',
+  });
+});
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/classes', classRouter);
