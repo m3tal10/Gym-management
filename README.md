@@ -129,25 +129,29 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 }
 ```
 
-# Admin Credentials
+# Testing instructions
+### Admin Credentials
 - email: `admin@gmail.com`
 - password: `test1234`
 
 
 # Instructions to Run Locally
-## Clone the repository:
+### 01. Clone the repository:
 `git clone https://github.com/m3tal10/Gym-management.git`
 
-## Navigate to the project directory:
+### 02. Navigate to the project directory:
 `cd Gym-management`
 
-## Install dependencies:
+### 03. Install dependencies:
 `npm install`
 
-## Start the development server:
-`npm start`
-## Start the production server:
-`npm run start:prod`
+### 04. Start the server:
+- You can use the following command to run the development server. The development server will show broader error messages with full details. (Makes it easier to debug)
+- `npm start`
+
+
+- You can use the following command to run the production server. The production server will show brief error messages without specific details. (Makes it secure so that the client does not gets to know about the exact error details.)
+- `npm run start:prod`
 
 # Live Hosting Link
 [https://gym-management-red.vercel.app/api/v1/](https://gym-management-red.vercel.app/api/v1/)
