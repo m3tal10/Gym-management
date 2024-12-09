@@ -135,6 +135,12 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 ### Admin Credentials
 - email: `admin@gmail.com`
 - password: `test1234`
+### Trainer Credentials
+- email: `trainer@gmail.com`
+- password: `test1234`
+### Trainee Credentials
+- email: `trainee@gmail.com`
+- password: `test1234`
 
 ### Test key features:
 #### Creating Trainers:
