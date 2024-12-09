@@ -4,6 +4,8 @@ const { getOne, getAll, deleteOne } = require('./handlerFactory');
 
 // For '/' route
 exports.getUsers = getAll(User);
+exports.getUser = getOne(User);
+exports.deleteUser = deleteOne(User);
 
 // Create a trainer
 exports.createTrainer = catchAsync(async (req, res, next) => {
@@ -40,14 +42,13 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUser = getOne(User);
 // Admin can only update the user credentials without passwords.
 exports.updateUser = catchAsync(async (req, res, next) => {
-  const { userId } = req.params;
+  const { id } = req.params;
   const data = req.body;
   delete data.password;
   delete data.passwordConfirm;
-  const updatedUser = await User.findByIdAndUpdate(userId, data, {
+  const updatedUser = await User.findByIdAndUpdate(id, data, {
     runValidators: true,
     new: true,
   });
@@ -59,6 +60,3 @@ exports.updateUser = catchAsync(async (req, res, next) => {
     },
   });
 });
-
-// delete a user, only admins can do this.
-exports.deleteUser = deleteOne(User);

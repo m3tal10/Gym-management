@@ -30,8 +30,8 @@ router.route('/resetPassword/:resetToken').patch(resetPassword);
 
 //For current user operation on their account informations
 router.use(authenticate);
-router.route('/me').patch(authenticate, updateMe);
-router.route('/changePassword').patch(authenticate, changePassword);
+router.route('/me').patch(authorize('trainee', 'admin'), updateMe);
+router.route('/changePassword').patch(changePassword);
 
 //For admin operations on user
 router.use(authorize('admin'));

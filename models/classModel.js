@@ -46,11 +46,14 @@ const classSchema = mongoose.Schema({
   },
 });
 
+// Update the enrolled field in the document with each trainee updated.
 classSchema.pre('save', function (next) {
-  if (!this.isModified('trainees')) return next();
+  if (!this.isModified('trainees') && !this.isNew) return next();
   this.enrolled = this.trainees.length;
   next();
 });
+
+// Update the end time whenever a new class is created.
 classSchema.pre('save', function (next) {
   if (!this.isModified('start') && !this.isNew) return next();
   const date = new Date(this.start);
@@ -58,6 +61,7 @@ classSchema.pre('save', function (next) {
   next();
 });
 
+// Checks if there are more than 5 classes per day.
 classSchema.pre('save', async function (next) {
   if (!this.start || !this.isNew) return next();
   const startOfDay = new Date(this.start);
@@ -73,11 +77,17 @@ classSchema.pre('save', async function (next) {
   });
 
   if (!(dayClassCount < 5)) {
-    return next(new AppError('Can not add more than 5 classes per day.', 400));
+    return next(
+      new AppError(
+        'Class booking limit exceeded. You can not add more than 5 classes per day.',
+        400,
+      ),
+    );
   }
   next();
 });
 
+// Populates the foreign fields if a single class is fetched.
 classSchema.pre('findOne', function (next) {
   this.populate([
     {

@@ -21,6 +21,7 @@ const createSendToken = (user, status, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
     ),
     httpOnly: true,
+    sameSite: 'None',
   };
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
@@ -30,8 +31,7 @@ const createSendToken = (user, status, res) => {
   user.password = undefined;
 
   res.status(status).json({
-    status: 'success',
-    token,
+    success: true,
     data: {
       user,
     },
@@ -71,23 +71,27 @@ exports.login = catchAsync(async (req, res, next) => {
   //If everything is verified, Sign the token and send it to the user.
   createSendToken(user, 200, res);
 });
+
+// Log out the user
 exports.logout = (req, res, next) => {
   res.cookie('jwt', 'loggedOut', {
     expires: new Date(Date.now() + 5 * 1000),
     httpOnly: true,
   });
   res.status(200).json({
-    status: 'success',
+    success: true,
     message: 'Logged out successfully.',
   });
 };
 
+// Authenticate the user based on JWT.
 exports.authenticate = catchAsync(async (req, res, next) => {
   const token = req.cookies.jwt;
   if (!token)
     return next(new AppError('You are not logged in. Please log in.', 401));
   const { id, iat } = await verifyJWT(token);
   const user = await User.findById(id);
+
   if (!user)
     return next(
       new AppError(
@@ -107,33 +111,25 @@ exports.authenticate = catchAsync(async (req, res, next) => {
   next();
 });
 
-//For frontend server side rendering
-exports.isLoggedIn = catchAsync(async (req, res, next) => {
-  const token = req.cookies.jwt;
-  //If no token found run the next middleware.
-  if (!token) return next();
-  const { id, iat } = await verifyJWT(token);
-  const user = await User.findById(id);
-  //If no user found with that decoded id then go to the next middleware.
-  if (!user) return next();
-  //If the user changed password after the token creation then execute the next middleware.
-  if (user.passwordChangedAfter(iat)) return next();
-  //Grant access to the protected route
-  req.locals.user = user;
-  next();
-});
-
+// Authorization functionality for role based users
 exports.authorize =
   (...roles) =>
   (req, res, next) => {
     const { role } = req.user;
-    if (!roles.includes(role))
+    if (!roles.includes(role)) {
+      const authorized = roles.join(' or ').trim();
       return next(
-        new AppError('You are not authorized to perform this action.', 403),
+        new AppError(
+          `Unauthorized access. You must be ${authorized[0] === 'a' ? 'an' : 'a'} ${authorized} to perform this action.`,
+          403,
+        ),
       );
+    }
+
     next();
   };
 
+// Change the currently logged in user's password
 exports.changePassword = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user._id).select('+password');
   const { currentPass, passNew, passConfirm } = req.body;
@@ -175,10 +171,13 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await new Email(user, resetUrl).sendPasswordReset(text, 'Password Reset');
 
   res.status(200).json({
-    status: 'success',
-    message: 'Token sent to the mail. Please check your inbox.',
+    success: true,
+    message:
+      'Link sent to the mail. Please check your inbox for further instructions.',
   });
 });
+
+// Reset password functionality
 exports.resetPassword = catchAsync(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
   const { resetToken } = req.params;
@@ -200,5 +199,5 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
   await user.save();
-  createSendToken(user.id, 200, res);
+  createSendToken(user, 200, res);
 });

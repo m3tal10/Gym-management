@@ -15,6 +15,9 @@ exports.getAvailableClasses = catchAsync(async (req, res, next) => {
     end: {
       $gte: Date.now(),
     },
+    enrolled: {
+      $lt: 10,
+    },
   });
   res.status(200).json({
     success: true,
@@ -42,7 +45,13 @@ exports.getAssignedClasses = catchAsync(async (req, res, next) => {
 exports.bookClass = catchAsync(async (req, res, next) => {
   const { id: classId } = req.params;
   const { id: traineeId } = req.user;
-  const bookedClass = await Class.findById(classId);
+  const bookedClass = await Class.findOne({
+    _id: classId,
+    end: { $gt: Date.now() },
+  });
+  if (!bookedClass) {
+    return next(new AppError('The class is not available anymore.', 400));
+  }
   bookedClass.trainees.push(traineeId);
   await bookedClass.save();
   res.status(201).json({
