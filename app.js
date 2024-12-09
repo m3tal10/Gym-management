@@ -22,7 +22,7 @@ app.use(helmet());
 
 //This will limit the requests sent to the server from an IP. Currently, the limit is 100 requests per hour.
 const limiter = rateLimit({
-  max: 100,
+  max: 10000,
   windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP.Please try again in an hour.',
 });
