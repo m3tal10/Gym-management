@@ -66,7 +66,8 @@ Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
     },
     passwordResetToken: String,
     passwordResetExpires: Date,
-  } ```
+  }
+```
 ## Class Model
 ```{
   name: {
@@ -111,7 +112,8 @@ Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
   end: {
     type: Date,
   },
-}```
+}
+```
 
 # Admin Credentials
 - email: `admin@gmail.com`
