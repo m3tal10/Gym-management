@@ -1,25 +1,37 @@
-This is a gym management application.
-In this application there are two entities:
-# 1. User:
-# 2. Class:
 
-Sure, here is a template for your README file based on the provided instructions:
 
 # Gym Management
 
 ## Project Overview
-<!-- Brief description of the system -->
+This is a gym management application.
+In this application, there are two entities:
+## 1. User:
+The users can have 3 roles: Admin, Trainer, Trainee.
+## 2. Class:
+Admin can create a class and assign a trainer to the class and then trainees can enroll to the class if there are less than 10 trainees enrolled.
 
+This application ensures proper security. Trainees can enroll in a class, trainers can view their assigned classes and the start and end times. Admins can create trainers and modify the existing entities.
 ## Relation Diagram
 ![Blank diagram (9)](https://github.com/user-attachments/assets/3c9370d0-e496-4388-ac9b-dad07d88dcf5)
+- This is a high-level relation diagram between the two entities User and Class.
+- It is mandatory for a class to have at least one user. Such as a trainer. Or else, the class cannot exist.
+- The class can contain multiple users and a single user can enroll(trainees)/get assigned(trainers) to multiple classes. So, it is a Many to Many relationship
 
+![Blank diagram (8)](https://github.com/user-attachments/assets/933bda23-3559-43ee-b285-1182dd7de1af)
 
+- This is a more detailed relation diagram based on each user's role. We can see three tables: admin, trainers, and trainees.
+- A mandatory one-to-many relationship connects the trainer and the class. Because A class cannot exist without a trainer. So, a class must have a trainer to exist.
+- A many-to-many relationship connects the trainee and the class. It is not mandatory for each of the entities to be connected. A class can have zero trainees, a trainee might not join any class.
 
 ## Technology Stack
 - JavaScript
+- ExpressJS
+- Mongoose ODM
+- MongoDB
+- JWT
 
 ## Documentation 
-Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
+Link: [API Documentation] (https://documenter.getpostman.com/view/36963920/2sAYBd7oEX)
 
 
 # Database Schema
