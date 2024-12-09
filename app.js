@@ -40,7 +40,7 @@ app.use(xss());
 //   console.log(req.cookies.jwt);
 //   next();
 // });
-app.use('/api/v1', (req, res, next) => {
+app.use('/api/home', (req, res, next) => {
   res.status(200).json({
     success: true,
     message:
