@@ -3,7 +3,9 @@
 2. There are two environments in this application:
 - development: In this environment, the server will show maximum error details to make debugging easy. You can use `npm start` command to run the development server.
 - production: In this environment, the server will show minimal error details to prevent clients to know much details about the error that might cause security vulnerability. You can user `npm run start:prod` to run the production server. The live link is running on the production environment. So, you will see minumum errors in the live server.
-3. The api documentation is created using postman. In the documentation: you can change your preferred language from the top navigation bar -> language. You can check the documentation here: [Documentation](https://github.com/m3tal10/Gym-management?tab=readme-ov-file#documentation)
+3. The API documentation is created using Postman. In the documentation: you can change your preferred language from the top navigation bar -> language. You can check the documentation here: [Documentation](https://github.com/m3tal10/Gym-management?tab=readme-ov-file#documentation)
+4. The production server uses real-time email handling. So, If you use a real email to signup for your account then a welcome mail should be sent to your email. You will be able to use the forgot password functionality too.
+5. I have pushed the environment variable file to the GitHub repo. So, you do not have to do anything extra to replicate everything.
 # Gym Management
 
 ## Project Overview
