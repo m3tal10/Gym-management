@@ -31,7 +31,7 @@ This application ensures proper security. Trainees can enroll in a class, traine
 - JWT
 
 ## Documentation 
-Link: [API Documentation] (https://documenter.getpostman.com/view/36963920/2sAYBd7oEX)
+Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd7oEX)
 
 
 # NOSQL Database Schema
