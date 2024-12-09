@@ -24,7 +24,8 @@ Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
 
 # Database Schema
 ## User Model
-```{
+```javascript
+{
     name: {
       type: String,
       required: [true, 'A user must have a name.'],
@@ -69,7 +70,8 @@ Link: `https://documenter.getpostman.com/view/36963920/2sAYBd7oEX`
   }
 ```
 ## Class Model
-```{
+```javascript
+{
   name: {
     type: String,
     required: [true, 'A class must have a name.'],
