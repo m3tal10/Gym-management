@@ -179,7 +179,7 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 3. If there is a class then copy the id of the class. (If there is no class you should log in as an admin and create a class with the end time greater than the current time and enrolled less than 10.)
 4. Create a PATCH request to the following link replacing the `:id` field with the id copied in the third step:
 - `https://gym-management-red.vercel.app/api/v1/classes/:id/book`
-5. The response should contain the data of the booked class where `trainees` field contains the currently logged-in trainee ID and a status code of 200.
+5. The response should contain the data of the booked class where `trainees` field contains the currently logged-in trainee ID and a status code of 201.
 
 # Instructions to Run Locally
 ### 01. Clone the repository:
