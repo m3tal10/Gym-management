@@ -134,6 +134,44 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 - email: `admin@gmail.com`
 - password: `test1234`
 
+### Test key features:
+#### Creating Trainers:
+1. Log in as an admin.
+2. Create a POST request to the following link:
+- `https://gym-management-red.vercel.app/api/v1/users/`
+3. Add the following JSON in the request body:
+  ```javascript
+  {
+	"name": "fay",
+    "email":"trainer2@gmail.com",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  }
+  ```
+4. The response should contain the data of the new user created with the role of 'trainer' and a status code of 201.
+
+#### Scheduling Classes
+1. Log in as an admin.
+2. Create a POST request to the following link:
+- `https://gym-management-red.vercel.app/api/v1/classes`
+3. Add the following JSON in the request body:
+  ```javascript
+  {
+    "trainer":"6755b46a8ee85dccae284d96",
+    "name": "yo yo",
+    "start":"2024-12-09T10:30:05.957Z"
+  }
+  ```
+4. The response should contain the data of the newly scheduled class and a status code of 201.
+
+#### Booking Classes
+1. Log in as a trainee.
+2. Create a GET request to the following link:
+- `https://gym-management-red.vercel.app/api/v1/classes/available`
+3. If there is a class then copy the id of the class. (If there is no class you should log in as an admin and create a class with the end time greater than the current time and enrolled less than 10.)
+4. Create a PATCH request to the following link replacing the `:id` field with the id copied in the third step:
+- `https://gym-management-red.vercel.app/api/v1/classes/:id/book`
+5. The response should contain the data of the booked class where `trainees` field contains the currently logged-in trainee ID and a status code of 200.
 
 # Instructions to Run Locally
 ### 01. Clone the repository:
@@ -146,11 +184,10 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 `npm install`
 
 ### 04. Start the server:
-- You can use the following command to run the development server. The development server will show broader error messages with full details. (Makes it easier to debug)
+You can use the following command to run the development server. The development server will show broader error messages with full details. (Makes it easier to debug)
 - `npm start`
 
-
-- You can use the following command to run the production server. The production server will show brief error messages without specific details. (Makes it secure so that the client does not gets to know about the exact error details.)
+You can use the following command to run the production server. The production server will show brief error messages without specific details. (Makes it secure so that the client does not gets to know about the exact error details.)
 - `npm run start:prod`
 
 # Live Hosting Link
