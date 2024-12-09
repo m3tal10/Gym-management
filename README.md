@@ -37,7 +37,7 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
 
 
 # NOSQL Database Schema
-## User Model
+## User Schema
 ```javascript
 {
     name: {
@@ -83,7 +83,7 @@ Link: [API Documentation](https://documenter.getpostman.com/view/36963920/2sAYBd
     passwordResetExpires: Date,
   }
 ```
-## Class Model
+## Class Schema
 ```javascript
 {
   name: {
