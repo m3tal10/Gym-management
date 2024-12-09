@@ -1,5 +1,9 @@
-
-
+# Notice
+1. This application is hosted on Vercel. This may take some time to make the initial request to the server as the free Vercel subscription is not stable. You are requested to make multiple requests to the server if the endpoint is not accessible initially.
+2. There are two environments in this application:
+- development: In this environment, the server will show maximum error details to make debugging easy. You can use `npm start` command to run the development server.
+- production: In this environment, the server will show minimal error details to prevent clients to know much details about the error that might cause security vulnerability. You can user `npm run start:prod` to run the production server. The live link is running on the production environment. So, you will see minumum errors in the live server.
+3. The api documentation is created using postman. In the documentation: you can change your preferred language from the top navigation bar -> language. You can check the documentation here: [Documentation](https://github.com/m3tal10/Gym-management?tab=readme-ov-file#documentation)
 # Gym Management
 
 ## Project Overview
