@@ -12,11 +12,13 @@ Admin can create a class and assign a trainer to the class and then trainees can
 
 This application ensures proper security. Trainees can enroll in a class, trainers can view their assigned classes and the start and end times. Admins can create trainers, and classes and modify the existing entities.
 ## Relation Diagram
+### Diagram 01:
 ![Blank diagram (9)](https://github.com/user-attachments/assets/3c9370d0-e496-4388-ac9b-dad07d88dcf5)
 - This is a high-level relation diagram between the two entities User and Class.
 - It is mandatory for a class to have at least one user. Such as a trainer. Or else, the class cannot exist.
-- The class can contain multiple users and a single user can enroll(trainees)/get assigned(trainers) to multiple classes. So, it is a Many to Many relationship
+- The class can contain multiple users and a single user can enroll(trainees)/get assigned(trainers) to multiple classes. So, it is a Many to Many relationship.
 
+### Diagram 02:
 ![Blank diagram (8)](https://github.com/user-attachments/assets/933bda23-3559-43ee-b285-1182dd7de1af)
 
 - This is a more detailed relation diagram based on each user's role. We can see three tables: admin, trainers, and trainees.
