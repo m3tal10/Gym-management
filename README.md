@@ -10,7 +10,7 @@ The users can have 3 roles: Admin, Trainer, Trainee.
 ## 2. Class:
 Admin can create a class and assign a trainer to the class and then trainees can enroll to the class if there are less than 10 trainees enrolled.
 
-This application ensures proper security. Trainees can enroll in a class, trainers can view their assigned classes and the start and end times. Admins can create trainers and modify the existing entities.
+This application ensures proper security. Trainees can enroll in a class, trainers can view their assigned classes and the start and end times. Admins can create trainers, and classes and modify the existing entities.
 ## Relation Diagram
 ![Blank diagram (9)](https://github.com/user-attachments/assets/3c9370d0-e496-4388-ac9b-dad07d88dcf5)
 - This is a high-level relation diagram between the two entities User and Class.
@@ -34,7 +34,7 @@ This application ensures proper security. Trainees can enroll in a class, traine
 Link: [API Documentation] (https://documenter.getpostman.com/view/36963920/2sAYBd7oEX)
 
 
-# Database Schema
+# NOSQL Database Schema
 ## User Model
 ```javascript
 {
@@ -144,9 +144,10 @@ Link: [API Documentation] (https://documenter.getpostman.com/view/36963920/2sAYB
 ## Install dependencies:
 `npm install`
 
-## Start the server:
+## Start the development server:
 `npm start`
-
+## Start the production server:
+`npm run start:prod`
 
 # Live Hosting Link
-
+[https://gym-management-red.vercel.app/api/v1/](https://gym-management-red.vercel.app/api/v1/)
