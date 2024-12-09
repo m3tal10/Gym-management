@@ -205,4 +205,4 @@ You can use the following command to run the production server. The production s
 - `npm run start:prod`
 
 # Live Hosting Link
-[https://gym-management-red.vercel.app/api/v1/](https://gym-management-red.vercel.app/api/v1/)
+[https://gym-management-red.vercel.app/api/home/](https://gym-management-red.vercel.app/api/home/)
